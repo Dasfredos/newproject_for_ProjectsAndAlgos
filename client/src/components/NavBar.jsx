@@ -10,7 +10,7 @@ const NavBar = ({ user, setUser }) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/api/user-current`, { withCredentials: true })
+            .get(`http://localhost:8000/api/user-current`, { withCredentials: true })
             .then(res => {
                 console.log("current user" + res.data)
                 setUser(res.data);

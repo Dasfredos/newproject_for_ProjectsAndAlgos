@@ -18,7 +18,7 @@ function EditEvent(props) {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/api/footyevent/${id}`, { withCredentials: true })
+            .get(`http://localhost:8000/api/footyevent/${id}`, { withCredentials: true })
             .then(res => {
                 const { name, date, time, address } = res.data;
                 setFormData({ name, date, time, address });

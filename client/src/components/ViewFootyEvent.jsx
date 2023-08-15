@@ -21,7 +21,7 @@ const ViewFootyEvents = (props) => {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/footyevent/${id}`)
+        axios.get(`http://localhost:8000/api/footyevent/${id}`)
             .then(res => {
                 console.log(res.data);
                 setFootyEvent(res.data);

@@ -52,7 +52,7 @@ const NavBar = ({ user, setUser }) => {
             </button>
             <div className={`collapse navbar-collapse ${navbarOpen ? "show" : ""}`} id="navbarTogglerDemo02">
                 <ul className="navbar-nav mx-auto text-center">
-                    <h3 className="navbar-brand">{(user && user.first) ? `Hi ${user.first},` : ""}</h3>
+                    <h2 className="navbar-brand">{(user && user.first) ? `Hi ${user.first},` : ""}</h2>
                     {(
                         location.pathname === '/createfootyevent' ||
                         location.pathname.startsWith('/editfootyevent') ||

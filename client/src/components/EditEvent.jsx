@@ -19,7 +19,7 @@ function EditEvent(props) {
     useEffect(() => {
         axios
             .get(`http://localhost:8000/api/footyevent/${id}`, { withCredentials: true })
-            .then(res => {
+            .then(res => { console.log(res.data)
                 const { name, date, time, address } = res.data;
                 setFormData({ name, date, time, address });
             })
@@ -38,7 +38,7 @@ function EditEvent(props) {
     const handleSubmit = e => {
         e.preventDefault();
         axios
-            .put(`http://localhost:8000/api/footyevent/${id}`, formData, { withCredentials: true })
+            .patch(`http://localhost:8000/api/footyevent/${id}`, formData, { withCredentials: true })
             .then(res => {
                 console.log("handleSubmit", formData);
                 console.log(res);

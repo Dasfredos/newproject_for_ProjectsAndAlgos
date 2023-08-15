@@ -2,7 +2,7 @@ const FootyEvent = require('../models/footyevent.model');
 const jwt = require('jsonwebtoken');
 const SECRET = "OHSOSECRET";
 
-const POPULATE_OPTIONS = 'creator first last skillLevel aboutMe';
+const POPULATE_OPTIONS = 'first last skillLevel aboutMe';
 
 const handleError = (res, err, msg = 'An error occurred') => {
     console.log(msg, err);
@@ -13,11 +13,13 @@ module.exports = {
 
     createNewFootyEvent: async (req, res) => {
         try {
-            console.log(req.body, req.cookies);
+            console.log("request cookies", req.cookies);
             const user = jwt.verify(req.cookies.userToken, SECRET);
+            console.log("getting user", user)
             const newEvent = await FootyEvent.create({ ...req.body, creator: user });
+            console.log("anything", newEvent)
             res.status(201).json(newEvent);
-        } catch (err) {
+        } catch (err) { console.log(err)
             handleError(res, err, 'Create Obj error');
         }
     },
@@ -30,13 +32,13 @@ module.exports = {
             let query = { date: { $gte: currentDate } };
             if (req.query.address) query.address = new RegExp(req.query.address, 'i');
 
-            const allFootyEvents = await FootyEvent.find(query).populate(POPULATE_OPTIONS);
+            const allFootyEvents = await FootyEvent.find(query).populate("creator", POPULATE_OPTIONS);  console.log("allfootyevents1", allFootyEvents)
 
             const formattedFootyEvents = allFootyEvents.map(event => ({
                 ...event._doc,
                 date: new Date(event.date).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
             }));
-
+console.log("all footy events", formattedFootyEvents)
             res.json(formattedFootyEvents);
         } catch (err) {
             handleError(res, err);
@@ -45,7 +47,7 @@ module.exports = {
 
     findOneSingleFootyEvent: async (req, res) => {
         try {
-            const event = await FootyEvent.findById(req.params.id).populate(POPULATE_OPTIONS);
+            const event = await FootyEvent.findById(req.params.id).populate("creator", POPULATE_OPTIONS);
             res.json(event);
         } catch (err) {
             handleError(res, err);
@@ -87,7 +89,7 @@ module.exports = {
             if (state) query.state = state;
             if (zip) query.zip = zip;
 
-            const events = await FootyEvent.find(query).populate(POPULATE_OPTIONS);
+            const events = await FootyEvent.find(query).populate("creator", POPULATE_OPTIONS);
             res.json(events);
         } catch (err) {
             handleError(res, err);

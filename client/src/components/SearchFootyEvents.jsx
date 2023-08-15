@@ -8,17 +8,13 @@ const SearchFootyEvents = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
-    SearchFootyEvents.defaultProps = {
-        user: {}
-    };
-
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     }
 
     const fetchFootyEvents = () => {
-        const url = searchTerm ? `http://localhost:8000/api/footyevents?address=${searchTerm}` : "http://localhost:8000/api/footyevents";
+        const url = (searchTerm) ? `http://localhost:8000/api/searchfootyevents?address=${searchTerm}` : "http://localhost:8000/api/searchfootyevents";
         axios.get(url)
             .then((res) => {
                 const currentDate = new Date();
@@ -58,7 +54,7 @@ const SearchFootyEvents = (props) => {
     }
 
     const deleteFootyEvent = (id) => {
-        axios.delete(`http://localhost:8000/api/footyevents/${id}`)
+        axios.delete(`http://localhost:8000/api/footyevent/${id}`)
             .then(res => {
                 fetchFootyEvents();
             })
@@ -109,7 +105,7 @@ const SearchFootyEvents = (props) => {
                                     <td className='text-white'>{place.date}</td>
                                     <td className='text-white'>{convertTo12HourFormat(place.time)}</td>
 
-                                    <Link className="btn btn-primary" to={`/user/${place._id}`}>
+                                    <Link className="btn btn-primary" to={`/user/${place.creator._id}`}>
 
                                         <td className='text-white'>{place.creator.first} {place.creator.last} </td>
                                     </Link>

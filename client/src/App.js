@@ -7,7 +7,7 @@ import EditEvent from './components/EditEvent';
 import NavBar from './components/NavBar';
 import Register from './components/Register';
 import Login from './components/Login';
-import ViewFootyEvents from './components/ViewFootyEvent'
+import ViewFootyEvents from './components/ViewFootyEvents';
 import SearchFootyEvents from './components/SearchFootyEvents';
 import AboutEvent from './components/AboutEvent';
 import AboutUser from './components/AboutUser';
@@ -28,7 +28,7 @@ function App() {
               <Route exact path ="/api/footyevent/:id" element={<AboutEvent setTitle={setTitle} user={user} setUser={setUser} />} />
               <Route exact path ="/register" element={<Register setTitle={setTitle} setUser={setUser}/>} />
               <Route exact path ="/searchfootyevents" element={<SearchFootyEvents  setTitle={setTitle} user={user}/>} />
-              <Route exact path ="/viewfootyevent/:id" element={<ViewFootyEvents  setTitle={setTitle} user={user}/>} />
+              <Route exact path ="/viewfootyevents/:id" element={<ViewFootyEvents  setTitle={setTitle} user={user}/>} />
               <Route exact path ="/user/:id" element={<AboutUser  setTitle={setTitle} user={user} setUser={setUser}/>} />
               <Route exact path ="/editfootyevent/:id" element={<EditEvent  setTitle={setTitle} user={user} />} />
               <Route exact path ="/logout" element={<HomePage />} />

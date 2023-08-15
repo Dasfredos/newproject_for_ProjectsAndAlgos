@@ -22,7 +22,7 @@ const AboutUser= (props) => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/user/${id}`)
+        axios.get(`http://localhost:8000/user/${id}`)
             .then(res => {
                 console.log(res.data);
                 setFootyEvent(res.data);
@@ -55,18 +55,18 @@ const AboutUser= (props) => {
 
     return (
         <div>
-            <h2 className="mt-4">{formData.creator.first} {formData.creator.last}</h2>
+            <h2 className="mt-4">{footyEvent.first} {footyEvent.last}</h2>
             <div>
                 <p className="mt-4"> </p>
             </div>
             <div>
-                <p>Skill Level: {formData.creator.skillLevel}</p>
+                <p>Skill Level: {footyEvent.skillLevel}</p>
             </div>
 
 
             <div>
                 <p className=''>About Me:  </p>
-                <p>{formData.creator.aboutMe}</p>
+                <p>{footyEvent.aboutMe}</p>
             </div>
         </div>
     )

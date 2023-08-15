@@ -22,7 +22,7 @@ const AboutUser= (props) => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/user/${id}`)
+        axios.get(`http://localhost:8000/api/user/${id}`)
             .then(res => {
                 console.log(res.data);
                 setFootyEvent(res.data);

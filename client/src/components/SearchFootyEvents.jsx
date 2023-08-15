@@ -58,7 +58,7 @@ const SearchFootyEvents = (props) => {
     }
 
     const deleteFootyEvent = (id) => {
-        axios.delete(`http://localhost:3000/api/footyevents/${id}`)
+        axios.delete(`http://localhost:8000/api/footyevents/${id}`)
             .then(res => {
                 fetchFootyEvents();
             })

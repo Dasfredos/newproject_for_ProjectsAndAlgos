@@ -38,7 +38,7 @@ function EditEvent(props) {
     const handleSubmit = e => {
         e.preventDefault();
         axios
-            .put(`http://localhost:3000/api/footyevent/${id}`, formData, { withCredentials: true })
+            .put(`http://localhost:8000/api/footyevent/${id}`, formData, { withCredentials: true })
             .then(res => {
                 console.log("handleSubmit", formData);
                 console.log(res);

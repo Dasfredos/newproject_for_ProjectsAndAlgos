@@ -22,7 +22,7 @@ const Register = ({ setUser }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log('register form')
-        axios.post('http://localhost:3000/api/register', {
+        axios.post('http://localhost:8000/api/register', {
             first, last, email, confirmEmail, password, confirmPassword, skillLevel, aboutMe
         }, { withCredentials: true })
             .then(res => {

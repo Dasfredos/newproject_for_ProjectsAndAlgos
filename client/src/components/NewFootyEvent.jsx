@@ -23,7 +23,7 @@ function NewFootyEvent(props) {
     const handleSubmit = e => {
         e.preventDefault();
         
-        axios.post('http://localhost:3000/api/createfootyevent', formData, { withCredentials: true })
+        axios.post('http://localhost:8000/api/createfootyevent', formData, { withCredentials: true })
             .then(res => {
                 navigate('/searchfootyevents');
             })

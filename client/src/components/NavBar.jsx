@@ -36,7 +36,7 @@ const NavBar = ({ user, setUser }) => {
     const handleLogout = (e) => {
         console.log("logging out");
         axios
-            .get('http://localhost:3000/api/logout', { withCredentials: true })
+            .get('http://localhost:8000/api/logout', { withCredentials: true })
             .then(res => {
                 setUser(null);
                 console.log("successful logout")

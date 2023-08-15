@@ -10,7 +10,7 @@ const Login = ({setUser}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3000/api/login',{ email, password}, { withCredentials: true })
+        axios.post('http://localhost:8000/api/login',{ email, password}, { withCredentials: true })
             .then ( res => {
                 setUser(res.data.user)
                 navigate("/searchfootyevents");

@@ -32,7 +32,7 @@ const ViewFootyEvents = (props) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/api/footyevent/${id}`, { withCredentials: true })
+            .get(`http://localhost:8000/api/footyevent/${id}`, { withCredentials: true })
             .then(res => {
                 console.warn(res.data);
                 const { name, date, time, address, creator } = res.data;
